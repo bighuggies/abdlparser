@@ -1,6 +1,20 @@
 /**
  * JavaCC template file created by SF JavaCC plugin 1.5.17+ wizard for JavaCC 1.5.0+
- */options{  JDK_VERSION = "1.5";  static = false;}PARSER_BEGIN(ABDLParser)package abdl;public class ABDLParser{}PARSER_END(ABDLParser)< DEFAULT, IN_ABDL, IN_PERSON > SKIP :{  " "| "\r"| "\t"| "\n"}
+ */options{  JDK_VERSION = "1.5";  static = false;}PARSER_BEGIN(ABDLParser)package abdl;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+public class ABDLParser{
+	public static void main(String[] args) throws FileNotFoundException	{
+		FileInputStream is = new FileInputStream(new File("./test/correct/nasser.abdl"));
+		ABDLParser parser = new ABDLParser(is);
+		try {
+			parser.AddressBook();
+			System.out.println("Input OK");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}	}
+}PARSER_END(ABDLParser)< DEFAULT, IN_ABDL, IN_PERSON > SKIP :{  " "| "\r"| "\t"| "\n"}
 < DEFAULT, IN_ABDL, IN_PERSON > TOKEN :
 {
   < LB : "(" >
@@ -15,7 +29,7 @@
 
 < IN_ABDL > TOKEN :{
   < PERSON : "person" >
-| < PERSONNAME : < QT > (["a"-"z", "A"-"Z", "-", " "])+ < QT > >
+| < PERSONNAME : < QT > ((["a"-"z", "A"-"Z", "-"])+ ([" "])*)+ < QT > >
 | < ALCB : "{" > : IN_PERSON
 | < ARCB : "}" > : DEFAULT
 }
