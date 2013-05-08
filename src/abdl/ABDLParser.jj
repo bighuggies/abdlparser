@@ -1,4 +1,16 @@
 /**
  * JavaCC template file created by SF JavaCC plugin 1.5.17+ wizard for JavaCC 1.5.0+
- */options{  JDK_VERSION = "1.5";  static = false;}PARSER_BEGIN(ABDLParser)package abdl;public class ABDLParser{}PARSER_END(ABDLParser)SKIP :{  " "| "\r"| "\t"| "\n"}TOKEN : // KEYWORDS{  < ADDRESSBOOK : "addressbook" >| < PERSON : "person" >| < BIRTHDATE : "birthdate" >| < PHONE : "phone" >| < EMAIL : "email" >| < ADDRESS : "address" >}TOKEN :{  < LCB : "{" >| < RCB : "}" >| < LB : "(" >| < RB : ")" >| < #QT : "\"" >| < #NUM : [ "0"-"9" ] >}TOKEN :{  < NAME : < QT > ([ "A"-"Z", "a"-"z", "-" ])+ < QT >>| < ABDLNAME : < QT > (~[ "\"" ])* < QT >>| < ADDRESSLINE : < QT > ([ "0"-"9", "a"-"z", "A"-"Z", "-", ",", "/" ])+ < QT >>| < EMAIL_ADDRESS : ([ "a"-"z", "A"-"Z", "0"-"9", ".", "+", "_" ])+ "@" ([ "a"-"z", "A"-"Z", "0"-"9", ".", "+", "_" ])+ >| < PHONE_NUM :    ("+")? (< NUM >)+    (      < EXT > (< NUM >)+    )? >| < #EXT : (" ")+ "ext" (" ")+ >}TOKEN : // MONTHS
-{  < DATE : < DAY > (" ")+ < MONTH > (" ")+ < YEAR >>| < #MONTH :    "January"  | "February"  | "March"  | "April"  | "May"  | "June"  | "July"  | "August"  | "September"  | "October"  | "November"  | "December" >| < #DAY : (< NUM >)    {      1, 2    }    >| < #YEAR : (< NUM >)    {      4    }    >}TOKEN :{  < TYPE :    "mobile"  | "home"  | "work"  | "other" >}TOKEN : //test{  < NUMBERS : ([ "0"-"9" ])+ >}void AddressBook() :{}{  < ADDRESSBOOK > < ABDLNAME > < LCB >  (    Person()  )*  < RCB > < EOF >}void Person() :{}{  < PERSON > < NAME > < LCB >  (    Birthday()  | Phone()  | Email()  | Address()  )*  < RCB >}void Birthday() :{}{  < BIRTHDATE > < DATE >}void Phone() :{}{  < PHONE > < LB > < TYPE > < RB > < PHONE_NUM >}void Email() :{}{  < EMAIL > < EMAIL_ADDRESS >}void Address() :{}{  < ADDRESS > < LB > < TYPE > < RB >  (    < ADDRESSLINE >  | < NAME >  )}
+ */options{  JDK_VERSION = "1.5";  static = false;}PARSER_BEGIN(ABDLParser)package abdl;public class ABDLParser{}PARSER_END(ABDLParser)SKIP :{  " "| "\r"| "\t"| "\n"}
+TOKEN :
+{
+  < LCB : "{" >
+| < RCB : "}" >
+| < LB : "(" >
+| < RB : ")" >
+| < #QT : "\"" >
+| < #NUM : [ "0"-"9" ] >
+}
+TOKEN : // KEYWORDS
+{  < ADDRESSBOOK : "addressbook" >| < PERSON : "person" >| < BIRTHDATE : "birthdate" >| < PHONE : "phone" >| < EMAIL : "email" >| < ADDRESS : "address" >}TOKEN :{  < PERSONNAME : < QT > (([ "a"-"z", "A"-"Z", "-" ])+ (" ")?)+ < QT >>| < ABDLNAME : < QT > (~[ "\"" ])* < QT >>| < ADDRESSLINE : < QT > ([ "0"-"9", "a"-"z", "A"-"Z", "-", ",", "/" ])+ < QT >>| < EMAIL_ADDRESS : < USERHOST > "@" < USERHOST > >
+| < #USERHOST : ([ "a"-"z", "A"-"Z", "0"-"9", ".", "+", "_" ])+ >| < PHONE_NUM : ("+")? (< NUM >)+ (< EXT > (< NUM >)+)? >| < #EXT : (" ")+ "ext" (" ")+ >}TOKEN : // MONTHS
+{  < DATE : < DAY > (" ")+ < MONTH > (" ")+ < YEAR >>| < #MONTH :    "January"  | "February"  | "March"  | "April"  | "May"  | "June"  | "July"  | "August"  | "September"  | "October"  | "November"  | "December" >| < #DAY : (< NUM >){1, 2} >| < #YEAR : (< NUM >){4} >}TOKEN :{  < TYPE :    "mobile"  | "home"  | "work"  | "other" >}void AddressBook() :{}{  < ADDRESSBOOK > < ABDLNAME > < LCB >  (    Person()  )*  < RCB > < EOF >}void Person() :{}{  < PERSON > < PERSONNAME > < LCB >  (    Birthday()  | Phone()  | Email()  | Address()  )*  < RCB >}void Birthday() :{}{  < BIRTHDATE > < DATE >}void Phone() :{}{  < PHONE > < LB > < TYPE > < RB > < PHONE_NUM >}void Email() :{}{  < EMAIL > < EMAIL_ADDRESS >}void Address() :{}{  < ADDRESS > < LB > < TYPE > < RB > < ADDRESSLINE >}
