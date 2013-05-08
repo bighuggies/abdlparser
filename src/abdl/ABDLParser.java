@@ -30,10 +30,10 @@ public class ABDLParser implements ABDLParserConstants {
     label_2:
     while (true) {
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case ADDRESS:
       case BIRTHDATE:
       case PHONE:
       case EMAIL:
-      case ADDRESS:
         ;
         break;
       default:
@@ -103,7 +103,7 @@ public class ABDLParser implements ABDLParserConstants {
       jj_la1_init_0();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x1000,0x1e000,0x1e000,};
+      jj_la1_0 = new int[] {0x800,0xf000,0xf000,};
    }
 
   /** Constructor with InputStream. */
