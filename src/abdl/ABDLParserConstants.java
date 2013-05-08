@@ -11,52 +11,64 @@ public interface ABDLParserConstants {
   /** End of File. */
   int EOF = 0;
   /** RegularExpression Id. */
-  int LCB = 5;
+  int LB = 5;
   /** RegularExpression Id. */
-  int RCB = 6;
+  int RB = 6;
   /** RegularExpression Id. */
-  int LB = 7;
+  int QT = 7;
   /** RegularExpression Id. */
-  int RB = 8;
+  int ADDRESSBOOK = 8;
   /** RegularExpression Id. */
-  int QT = 9;
+  int ABDLNAME = 9;
   /** RegularExpression Id. */
-  int ADDRESSBOOK = 10;
+  int DLCB = 10;
   /** RegularExpression Id. */
   int PERSON = 11;
   /** RegularExpression Id. */
-  int ADDRESS = 12;
+  int PERSONNAME = 12;
   /** RegularExpression Id. */
-  int BIRTHDATE = 13;
+  int ALCB = 13;
   /** RegularExpression Id. */
-  int PHONE = 14;
+  int ARCB = 14;
   /** RegularExpression Id. */
-  int EMAIL = 15;
+  int ADDRESS = 15;
   /** RegularExpression Id. */
-  int QUOTSTRING = 16;
+  int BIRTHDATE = 16;
   /** RegularExpression Id. */
-  int EMAIL_ADDRESS = 17;
+  int PHONE = 17;
   /** RegularExpression Id. */
-  int USER = 18;
+  int EMAIL = 18;
   /** RegularExpression Id. */
-  int HOST = 19;
+  int PRCB = 19;
   /** RegularExpression Id. */
-  int PHONE_NUM = 20;
+  int TYPE = 20;
   /** RegularExpression Id. */
-  int EXT = 21;
+  int ADDRESSLINE = 21;
   /** RegularExpression Id. */
-  int DATE = 22;
+  int EMAIL_ADDRESS = 22;
   /** RegularExpression Id. */
-  int MONTH = 23;
+  int USER = 23;
   /** RegularExpression Id. */
-  int DAY = 24;
+  int HOST = 24;
   /** RegularExpression Id. */
-  int YEAR = 25;
+  int PHONE_NUM = 25;
   /** RegularExpression Id. */
-  int TYPE = 26;
+  int EXT = 26;
+  /** RegularExpression Id. */
+  int DATE = 27;
+  /** RegularExpression Id. */
+  int DAY = 28;
+  /** RegularExpression Id. */
+  int YEAR = 29;
+  /** RegularExpression Id. */
+  int MONTH = 30;
 
   /** Lexical state. */
   int DEFAULT = 0;
+  /** Lexical state. */
+  int IN_ABDL = 1;
+  /** Lexical state. */
+  int IN_PERSON = 2;
 
   /** Literal token values. */
   String[] tokenImage = {
@@ -65,28 +77,32 @@ public interface ABDLParserConstants {
     "\"\\r\"",
     "\"\\t\"",
     "\"\\n\"",
-    "\"{\"",
-    "\"}\"",
     "\"(\"",
     "\")\"",
     "\"\\\"\"",
     "\"addressbook\"",
+    "<ABDLNAME>",
+    "\"{\"",
     "\"person\"",
+    "<PERSONNAME>",
+    "\"{\"",
+    "\"}\"",
     "\"address\"",
     "\"birthdate\"",
     "\"phone\"",
     "\"email\"",
-    "<QUOTSTRING>",
+    "\"}\"",
+    "<TYPE>",
+    "<ADDRESSLINE>",
     "<EMAIL_ADDRESS>",
     "<USER>",
     "<HOST>",
     "<PHONE_NUM>",
     "<EXT>",
     "<DATE>",
-    "<MONTH>",
     "<DAY>",
     "<YEAR>",
-    "<TYPE>",
+    "<MONTH>",
   };
 
 }
