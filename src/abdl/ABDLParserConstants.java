@@ -23,13 +23,41 @@ public interface ABDLParserConstants {
   /** RegularExpression Id. */
   int ADDRESS = 10;
   /** RegularExpression Id. */
-  int LB = 11;
+  int LCB = 11;
   /** RegularExpression Id. */
-  int RB = 12;
+  int RCB = 12;
   /** RegularExpression Id. */
-  int MONTH = 13;
+  int LB = 13;
   /** RegularExpression Id. */
-  int LOL = 14;
+  int RB = 14;
+  /** RegularExpression Id. */
+  int QT = 15;
+  /** RegularExpression Id. */
+  int NUM = 16;
+  /** RegularExpression Id. */
+  int NAME = 17;
+  /** RegularExpression Id. */
+  int ABDLNAME = 18;
+  /** RegularExpression Id. */
+  int ADDRESSLINE = 19;
+  /** RegularExpression Id. */
+  int EMAIL_ADDRESS = 20;
+  /** RegularExpression Id. */
+  int PHONE_NUM = 21;
+  /** RegularExpression Id. */
+  int EXT = 22;
+  /** RegularExpression Id. */
+  int DATE = 23;
+  /** RegularExpression Id. */
+  int MONTH = 24;
+  /** RegularExpression Id. */
+  int DAY = 25;
+  /** RegularExpression Id. */
+  int YEAR = 26;
+  /** RegularExpression Id. */
+  int TYPE = 27;
+  /** RegularExpression Id. */
+  int NUMBERS = 28;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -49,8 +77,22 @@ public interface ABDLParserConstants {
     "\"address\"",
     "\"{\"",
     "\"}\"",
+    "\"(\"",
+    "\")\"",
+    "\"\\\"\"",
+    "<NUM>",
+    "<NAME>",
+    "<ABDLNAME>",
+    "<ADDRESSLINE>",
+    "<EMAIL_ADDRESS>",
+    "<PHONE_NUM>",
+    "<EXT>",
+    "<DATE>",
     "<MONTH>",
-    "\"lol\"",
+    "<DAY>",
+    "<YEAR>",
+    "<TYPE>",
+    "<NUMBERS>",
   };
 
 }
