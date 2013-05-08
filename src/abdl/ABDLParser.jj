@@ -1,6 +1,6 @@
 /**
  * JavaCC template file created by SF JavaCC plugin 1.5.17+ wizard for JavaCC 1.5.0+
- */options{  JDK_VERSION = "1.5";  static = false;}PARSER_BEGIN(ABDLParser)package abdl;public class ABDLParser{}PARSER_END(ABDLParser)< DEFAULT, IN_ADDRESSBOOK, IN_PERSON, IN_ADDRESS > SKIP :{  " "| "\r"| "\t"| "\n"}
+ */options{  JDK_VERSION = "1.5";  static = false;}PARSER_BEGIN(ABDLParser)package abdl;public class ABDLParser{}PARSER_END(ABDLParser)SKIP :{  " "| "\r"| "\t"| "\n"}
 TOKEN :
 {
   < LCB : "{" >
@@ -10,19 +10,13 @@ TOKEN :
 | < #QT : "\"" >
 }
 TOKEN : // KEYWORDS
-{  < ADDRESSBOOK : "addressbook" > : IN_ADDRESSBOOK| < PERSON : "person" > : IN_PERSON
-| < ADDRESS : "address" > : IN_ADDRESS| < BIRTHDATE : "birthdate" >| < PHONE : "phone" >| < EMAIL : "email" >}
-< IN_ADDRESSBOOK > TOKEN :{
-  < ABDLNAME : < QT > (~["\""])* < QT > >  : DEFAULT}
-
-< IN_PERSON > TOKEN :
-{
-  < PERSONNAME : < QT > (["a"-"z", "A"-"Z", "-"])+ < QT > > : DEFAULT}
-
-< IN_ADDRESS > TOKEN :
-{
-  < ADDRESSLINE:  < QT > (["a"-"z", "A"-"Z", "0"-"9", "-", ",", "/"])+ < QT > > : DEFAULT}
+{  < ADDRESSBOOK : "addressbook" >| < PERSON : "person" >
+| < ADDRESS : "address" >| < BIRTHDATE : "birthdate" >| < PHONE : "phone" >| < EMAIL : "email" >}
+TOKEN:{
+  < QUOTSTRING : "\"" (~["\""])* "\"" >
+//  < ABDLNAME : < QT > (~["\""])* < QT > >//| < PERSONNAME : < QT > (["a"-"z", "A"-"Z", "-"])+ < QT > >//| < ADDRESSLINE:  < QT > (["a"-"z", "A"-"Z", "0"-"9", "-", ",", "/"])+ < QT > >
+}
 TOKEN : // FORMATTED DATA{< EMAIL_ADDRESS : < USER > "@" < HOST > >
 | < #USER : ([ "a"-"z", "A"-"Z", "0"-"9", ".", "+", "_" ])+ >
 | < #HOST : < USER > >| < PHONE_NUM : ("+")? (["0"-"9"])+ (< EXT > (["0"-"9"])+)? >| < #EXT : (" ")+ "ext" (" ")+ >}TOKEN : // MONTHS
-{  < DATE : < DAY > (" ")+ < MONTH > (" ")+ < YEAR >>| < #MONTH :    "January"  | "February"  | "March"  | "April"  | "May"  | "June"  | "July"  | "August"  | "September"  | "October"  | "November"  | "December" >| < #DAY : (["0"-"9"]){1, 2} >| < #YEAR : (["0"-"9"]){4} >}TOKEN :{  < TYPE :    "mobile"  | "home"  | "work"  | "other" >}void AddressBook() :{}{  < ADDRESSBOOK > < ABDLNAME > < LCB >  (Person())*  < RCB > < EOF >}void Person() :{}{  < PERSON > < PERSONNAME > < LCB >  (    Birthday()  | Phone()  | Email()  | Address()  )*  < RCB >}void Birthday() :{}{  < BIRTHDATE > < DATE >}void Phone() :{}{  < PHONE > < LB > < TYPE > < RB > < PHONE_NUM >}void Email() :{}{  < EMAIL > < EMAIL_ADDRESS >}void Address() :{}{  < ADDRESS > < LB > < TYPE > < RB > < ADDRESSLINE >}
+{  < DATE : < DAY > (" ")+ < MONTH > (" ")+ < YEAR >>| < #MONTH :    "January"  | "February"  | "March"  | "April"  | "May"  | "June"  | "July"  | "August"  | "September"  | "October"  | "November"  | "December" >| < #DAY : (["0"-"9"]){1, 2} >| < #YEAR : (["0"-"9"]){4} >}TOKEN :{  < TYPE :    "mobile"  | "home"  | "work"  | "other" >}void AddressBook() :{}{  < ADDRESSBOOK > < QUOTSTRING > < LCB >  (Person())*  < RCB > < EOF >}void Person() :{}{  < PERSON > < QUOTSTRING > < LCB >  (    Birthday()  | Phone()  | Email()  | Address()  )*  < RCB >}void Birthday() :{}{  < BIRTHDATE > < DATE >}void Phone() :{}{  < PHONE > < LB > < TYPE > < RB > < PHONE_NUM >}void Email() :{}{  < EMAIL > < EMAIL_ADDRESS >}void Address() :{}{  < ADDRESS > < LB > < TYPE > < RB > < QUOTSTRING >}

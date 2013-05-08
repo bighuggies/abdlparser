@@ -33,40 +33,30 @@ public interface ABDLParserConstants {
   /** RegularExpression Id. */
   int EMAIL = 15;
   /** RegularExpression Id. */
-  int ABDLNAME = 16;
+  int QUOTSTRING = 16;
   /** RegularExpression Id. */
-  int PERSONNAME = 17;
+  int EMAIL_ADDRESS = 17;
   /** RegularExpression Id. */
-  int ADDRESSLINE = 18;
+  int USER = 18;
   /** RegularExpression Id. */
-  int EMAIL_ADDRESS = 19;
+  int HOST = 19;
   /** RegularExpression Id. */
-  int USER = 20;
+  int PHONE_NUM = 20;
   /** RegularExpression Id. */
-  int HOST = 21;
+  int EXT = 21;
   /** RegularExpression Id. */
-  int PHONE_NUM = 22;
+  int DATE = 22;
   /** RegularExpression Id. */
-  int EXT = 23;
+  int MONTH = 23;
   /** RegularExpression Id. */
-  int DATE = 24;
+  int DAY = 24;
   /** RegularExpression Id. */
-  int MONTH = 25;
+  int YEAR = 25;
   /** RegularExpression Id. */
-  int DAY = 26;
-  /** RegularExpression Id. */
-  int YEAR = 27;
-  /** RegularExpression Id. */
-  int TYPE = 28;
+  int TYPE = 26;
 
   /** Lexical state. */
   int DEFAULT = 0;
-  /** Lexical state. */
-  int IN_ADDRESSBOOK = 1;
-  /** Lexical state. */
-  int IN_PERSON = 2;
-  /** Lexical state. */
-  int IN_ADDRESS = 3;
 
   /** Literal token values. */
   String[] tokenImage = {
@@ -86,9 +76,7 @@ public interface ABDLParserConstants {
     "\"birthdate\"",
     "\"phone\"",
     "\"email\"",
-    "<ABDLNAME>",
-    "<PERSONNAME>",
-    "<ADDRESSLINE>",
+    "<QUOTSTRING>",
     "<EMAIL_ADDRESS>",
     "<USER>",
     "<HOST>",

@@ -5,7 +5,7 @@ public class ABDLParser implements ABDLParserConstants {
 
   final public void AddressBook() throws ParseException {
     jj_consume_token(ADDRESSBOOK);
-    jj_consume_token(ABDLNAME);
+    jj_consume_token(QUOTSTRING);
     jj_consume_token(LCB);
     label_1:
     while (true) {
@@ -25,7 +25,7 @@ public class ABDLParser implements ABDLParserConstants {
 
   final public void Person() throws ParseException {
     jj_consume_token(PERSON);
-    jj_consume_token(PERSONNAME);
+    jj_consume_token(QUOTSTRING);
     jj_consume_token(LCB);
     label_2:
     while (true) {
@@ -85,7 +85,7 @@ public class ABDLParser implements ABDLParserConstants {
     jj_consume_token(LB);
     jj_consume_token(TYPE);
     jj_consume_token(RB);
-    jj_consume_token(ADDRESSLINE);
+    jj_consume_token(QUOTSTRING);
   }
 
   /** Generated Token Manager. */
@@ -220,7 +220,7 @@ public class ABDLParser implements ABDLParserConstants {
   /** Generate ParseException. */
   public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[29];
+    boolean[] la1tokens = new boolean[27];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
@@ -234,7 +234,7 @@ public class ABDLParser implements ABDLParserConstants {
         }
       }
     }
-    for (int i = 0; i < 29; i++) {
+    for (int i = 0; i < 27; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;
