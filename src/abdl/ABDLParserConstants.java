@@ -47,21 +47,19 @@ public interface ABDLParserConstants {
   /** RegularExpression Id. */
   int EMAIL_ADDRESS = 22;
   /** RegularExpression Id. */
-  int USER = 23;
+  int HOSTPART = 23;
   /** RegularExpression Id. */
-  int HOST = 24;
+  int PHONE_NUM = 24;
   /** RegularExpression Id. */
-  int PHONE_NUM = 25;
+  int EXT = 25;
   /** RegularExpression Id. */
-  int EXT = 26;
+  int DATE = 26;
   /** RegularExpression Id. */
-  int DATE = 27;
+  int DAY = 27;
   /** RegularExpression Id. */
-  int DAY = 28;
+  int YEAR = 28;
   /** RegularExpression Id. */
-  int YEAR = 29;
-  /** RegularExpression Id. */
-  int MONTH = 30;
+  int MONTH = 29;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -95,8 +93,7 @@ public interface ABDLParserConstants {
     "<TYPE>",
     "<ADDRESSLINE>",
     "<EMAIL_ADDRESS>",
-    "<USER>",
-    "<HOST>",
+    "<HOSTPART>",
     "<PHONE_NUM>",
     "<EXT>",
     "<DATE>",

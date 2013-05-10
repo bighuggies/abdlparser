@@ -6,6 +6,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class ABDLParser implements ABDLParserConstants {
+        public boolean seenEmail = false;
+        public boolean seenBirthday = false;
+
         public static void main(String[] args) throws FileNotFoundException
         {
                 FileInputStream is = new FileInputStream(new File("./test/correct/nasser.abdl"));
@@ -39,6 +42,7 @@ public class ABDLParser implements ABDLParserConstants {
   }
 
   final public void Person() throws ParseException {
+    seenEmail = false; seenBirthday = false;
     jj_consume_token(PERSON);
     jj_consume_token(PERSONNAME);
     jj_consume_token(ALCB);
@@ -59,11 +63,11 @@ public class ABDLParser implements ABDLParserConstants {
       case BIRTHDATE:
         Birthday();
         break;
-      case EMAIL:
-        Email();
-        break;
       case PHONE:
         Phone();
+        break;
+      case EMAIL:
+        Email();
         break;
       case ADDRESS:
         Address();
@@ -78,8 +82,10 @@ public class ABDLParser implements ABDLParserConstants {
   }
 
   final public void Birthday() throws ParseException {
+    if (seenBirthday) {if (true) throw new ParseException("Already seen birthday");}
     jj_consume_token(BIRTHDATE);
     jj_consume_token(DATE);
+                           seenBirthday = true;
   }
 
   final public void Phone() throws ParseException {
@@ -91,8 +97,10 @@ public class ABDLParser implements ABDLParserConstants {
   }
 
   final public void Email() throws ParseException {
+    if (seenEmail) {if (true) throw new ParseException("Already seen email");}
     jj_consume_token(EMAIL);
     jj_consume_token(EMAIL_ADDRESS);
+                                seenEmail = true;
   }
 
   final public void Address() throws ParseException {
@@ -235,7 +243,7 @@ public class ABDLParser implements ABDLParserConstants {
   /** Generate ParseException. */
   public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[31];
+    boolean[] la1tokens = new boolean[30];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
@@ -249,7 +257,7 @@ public class ABDLParser implements ABDLParserConstants {
         }
       }
     }
-    for (int i = 0; i < 31; i++) {
+    for (int i = 0; i < 30; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;
